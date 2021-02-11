@@ -1,4 +1,5 @@
 import random
+import matplotlib.pyplot as plt
 
 # Initial Variables
 startingPopulation = 50
@@ -10,6 +11,8 @@ fertilityx = 18
 fertilityy = 35
 
 peopleDictionary = []
+population = []
+year = []
 
 # Class Person
 class Person:
@@ -60,11 +63,15 @@ def runYear(food, agriculture, fertilityx, fertilityy, infantMortality, disaster
     infantMortality *= 0.985
     if random.randint(0,100) < disasterChance:
         del peopleDictionary[0:int(random.uniform(0.05, 0.2) * len(peopleDictionary))]
-    print(len(peopleDictionary))
+    population.append(len(peopleDictionary))
+    year.append(len(population))
     return infantMortality
 
 beginSim()
 
 while len(peopleDictionary) < 100000 and len(peopleDictionary) > 1:
     infantMortality = runYear(food, agriculture, fertilityx, fertilityy, infantMortality, disasterChance)
+
+plt.plot(year, population)
+plt.show
 
