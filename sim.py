@@ -2,9 +2,7 @@ import random
 
 # Initial Variables
 startingPopulation = 50
-## Infant Mortality Percentage
 infantMortality = 5
-## Unit food produced per person
 agriculture = 5 
 disasterChance = 10
 food = 0
@@ -13,13 +11,13 @@ fertilityy = 35
 
 peopleDictionary = []
 
+# Class Person
 class Person:
     def __init__(self, age):
         self.gender = random.randint(0,1)
         self.age = age
 
 # Harvest Function
-
 def harvest(food, agriculture):
     ablePeople = 0
     for person in peopleDictionary:
@@ -34,8 +32,7 @@ def harvest(food, agriculture):
     else:
         food =- len(peopleDictionary)
 
-# reproduce function
-
+# Reproduce Function
 def reproduce(fertilityx, fertilityy):
     for person in peopleDictionary:
         if person.gender == 1 and person.age > fertilityx and person.age < fertilityy:
@@ -47,7 +44,11 @@ def reproduce(fertilityx, fertilityy):
 def beginSim():
     for x in range(startingPopulation):
         peopleDictionary.append(Person(random.randint(18,50)))
-
+# One Year Function
+'''
+    Simulates, for a single year, harvest, repordcution, 
+    adjusts infantMortality, and incorporates the chance of a disaster
+'''
 def runYear(food, agriculture, fertilityx, fertilityy, infantMortality, disasterChance):
     harvest(food, agriculture)
     reproduce(fertilityx, fertilityy)
