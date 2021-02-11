@@ -55,7 +55,7 @@ def runYear(food, agriculture, fertilityx, fertilityy):
             peopleDictionary.remove(person)
         else:
             person.age += 1
-    print len(peopleDictionary)
+    print(len(peopleDictionary))
 
 beginSim()
 
