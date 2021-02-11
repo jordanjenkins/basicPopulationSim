@@ -40,14 +40,15 @@ def reproduce(fertilityx, fertilityy):
     for person in peopleDictionary:
         if person.gender == 1 and person.age > fertilityx and person.age < fertilityy:
             if random.randint(0,5) == 1:
-                peopleDictionary.append(Person(0))
+                if random.randint(0,100) > infantMortalitiy:
+                    peopleDictionary.append(Person(0))
 
 # Initiate simulation
 def beginSim():
     for x in range(startingPopulation):
         peopleDictionary.append(Person(random.randint(18,50)))
 
-def runYear(food, agriculture, fertilityx, fertilityy):
+def runYear(food, agriculture, fertilityx, fertilityy, infantMortalitiy):
     harvest(food, agriculture)
     reproduce(fertilityx, fertilityy)
     for person in peopleDictionary:
@@ -60,5 +61,5 @@ def runYear(food, agriculture, fertilityx, fertilityy):
 beginSim()
 
 while len(peopleDictionary) < 100000 and len(peopleDictionary) > 1:
-    runYear(food, agriculture, fertilityx, fertilityy)
+    runYear(food, agriculture, fertilityx, fertilityy, infantMortalitiy)
 
