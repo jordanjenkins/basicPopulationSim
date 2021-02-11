@@ -1,1 +1,1 @@
-# pandemicSimulation
+# basicPopulationSim
